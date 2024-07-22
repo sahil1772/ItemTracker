@@ -8,7 +8,13 @@ class ListingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<GlobalKey> keys = [];
+
     ItemNotifier notifier = Provider.of<ItemNotifier>(context,listen: true);
+
+   notifier.items.forEach((element) {
+     keys.add(GlobalKey());
+   });
 
     return Scaffold(
       backgroundColor: Colors.deepPurple.shade50,
@@ -37,87 +43,102 @@ class ListingScreen extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (context, index) {
                 final Item item = notifier!.items[index];
-                return Card(
-                    margin: const EdgeInsets.all(16),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    "Item Name",
-                                    style: TextStyle(fontSize: 10),
-                                  ),
-                                  Text(
-                                    item.name,
-                                    style: const TextStyle(
-                                        fontSize: 18, color: Colors.deepPurple),
-                                  ),
-                                ],
-                              )),
-                              Row(
-                                children: [
-                                  OutlinedButton.icon(
-                                    key: Key("editButton_$index"),
-                                    style: OutlinedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      size: 16,
-                                    ),
-                                    onPressed: () {
-                                      _showSheet(context: context,
-                                          onSubmit: (item) {
-                                            notifier.editItem(index, item);
-                                          },
-                                          isEdit: true,
-                                          data: item);
-                                    },
-                                    label: const Text("Edit"),
-                                  ),
-                                  IconButton(
-                                      key: Key("deleteButton_$index"),
-                                      onPressed: () {
-                                        _showDeleteDialog(context: context,onSubmit: () {
-                                          notifier.removeItem(index);
-                                        });
-                                      },
-                                      icon: const Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ))
-                                ],
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                return InkWell(
+                  onTap: () {
+                    RenderObject? renderObject = keys[index].currentContext!.findRenderObject();
+                    if (renderObject is RenderBox) {
+                      RenderBox renderBox = renderObject;
+                      final size = renderBox.size;
+                      final position = renderBox.localToGlobal(Offset.zero);
+
+                      //PRINT SIZE AND POSITION
+                      print('Size: $size, Position: $position');
+                    }
+
+                  },
+                  child: Card(
+                    key: keys[index],
+                      margin: const EdgeInsets.all(16),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
                               children: [
-                                const Text(
-                                  "Description",
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                Text(
-                                  item.description,
-                                  style: const TextStyle(
-                                      fontSize: 18, color: Colors.deepPurple),
+                                Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Item Name",
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                    Text(
+                                      item.name,
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.deepPurple),
+                                    ),
+                                  ],
+                                )),
+                                Row(
+                                  children: [
+                                    OutlinedButton.icon(
+                                      key: Key("editButton_$index"),
+                                      style: OutlinedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                      icon: const Icon(
+                                        Icons.edit,
+                                        size: 16,
+                                      ),
+                                      onPressed: () {
+                                        _showSheet(context: context,
+                                            onSubmit: (item) {
+                                              notifier.editItem(index, item);
+                                            },
+                                            isEdit: true,
+                                            data: item);
+                                      },
+                                      label: const Text("Edit"),
+                                    ),
+                                    IconButton(
+                                        key: Key("deleteButton_$index"),
+                                        onPressed: () {
+                                          _showDeleteDialog(context: context,onSubmit: () {
+                                            notifier.removeItem(index);
+                                          });
+                                        },
+                                        icon: const Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ))
+                                  ],
                                 )
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                    ));
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Description",
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                  Text(
+                                    item.description,
+                                    style: const TextStyle(
+                                        fontSize: 18, color: Colors.deepPurple),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                );
               },
               itemCount: notifier!.items.length,
               shrinkWrap: true,
