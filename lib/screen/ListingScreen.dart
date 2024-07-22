@@ -153,7 +153,7 @@ class ListingScreen extends StatelessWidget {
     final TextEditingController nameController =
         TextEditingController(text: isEdit! ? data!.name : "");
     final TextEditingController descriptionController =
-        TextEditingController(text: isEdit! ? data!.name : "");
+        TextEditingController(text: isEdit! ? data!.description : "");
 
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
