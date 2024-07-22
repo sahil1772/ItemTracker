@@ -1,0 +1,12 @@
+com.example.itemtracker.app-jetified-window-java-1.0.0-beta04-0 C:\Users\SAHIL\.gradle\caches\transforms-3\27cded7a0d5f28b974022fec8b99372b\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.itemtracker.app-jetified-annotation-experimental-1.1.0-1 C:\Users\SAHIL\.gradle\caches\transforms-3\363e89726e91293e3c2a0ae71034faa1\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.itemtracker.app-core-1.6.0-2 C:\Users\SAHIL\.gradle\caches\transforms-3\74d9bddb83f64d088275787a76399f4f\transformed\core-1.6.0\res
+com.example.itemtracker.app-jetified-window-1.0.0-beta04-3 C:\Users\SAHIL\.gradle\caches\transforms-3\fd0ee8a1e58720ca7f574e49516b2d34\transformed\jetified-window-1.0.0-beta04\res
+com.example.itemtracker.app-debug-4 F:\Personal Project\itemtracker\android\app\src\debug\res
+com.example.itemtracker.app-main-5 F:\Personal Project\itemtracker\android\app\src\main\res
+com.example.itemtracker.app-pngs-6 F:\Personal Project\itemtracker\build\app\generated\res\pngs\debug
+com.example.itemtracker.app-resValues-7 F:\Personal Project\itemtracker\build\app\generated\res\resValues\debug
+com.example.itemtracker.app-rs-8 F:\Personal Project\itemtracker\build\app\generated\res\rs\debug
+com.example.itemtracker.app-mergeDebugResources-9 F:\Personal Project\itemtracker\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.itemtracker.app-mergeDebugResources-10 F:\Personal Project\itemtracker\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.itemtracker.app-merged_res-11 F:\Personal Project\itemtracker\build\app\intermediates\merged_res\debug

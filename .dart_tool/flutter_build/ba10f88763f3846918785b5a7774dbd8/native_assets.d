@@ -1,0 +1,1 @@
+ F:\\Personal\ Project\\itemtracker\\.dart_tool\\flutter_build\\ba10f88763f3846918785b5a7774dbd8\\native_assets.yaml: 
